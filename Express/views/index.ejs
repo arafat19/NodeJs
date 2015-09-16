@@ -15,7 +15,7 @@
 <ul>
     <% videodata.categories.forEach(function(item){ %>
 
-        <li><%= item.categoryName%></li>
+        <li><a href="<%= item.categoryID%>"><%= item.categoryName%></a></li>
 
     <% }); %>
 </ul>
