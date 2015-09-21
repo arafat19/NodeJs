@@ -9,15 +9,11 @@
 <h1><%= title %></h1>
 
 <% include template/header.ejs %>
-
-<h1> <%= videodata.categoryName %> </h1>
-
+<%= data[0].author%>
 <ul>
-    <% videodata.categories.forEach(function(item){ %>
-
-        <li><a href="<%= item.categoryID%>"><%= item.categoryName%></a></li>
-
-    <% }); %>
+    <% for (var i = 0; i < data.length; i++){ %>
+        <li><%= data[i].author %> </li>
+ <% } %>
 </ul>
 </body>
 </html>
