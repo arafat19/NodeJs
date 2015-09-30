@@ -1,18 +1,8 @@
+var connection = require('./mySqlDbConnection.js').dbConnection();
 var express = require('express');
 var router = express.Router();
 var vd = require('../videodata.json');
 
-
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'root',
-    port     : 8889,
-    database : 'test_db'
-});
-
-connection.connect();
 
 var article ={
     author: 'Md Ibrahim Arafat',
@@ -27,7 +17,8 @@ var article ={
     }
     console.error(result);
 });*/
-var id;
+
+var resultRows;
 var query = connection.query('SELECT * FROM articles', function(err, result){
     if(err){
         console.error(err);
@@ -35,7 +26,7 @@ var query = connection.query('SELECT * FROM articles', function(err, result){
     }
    //console.error(result);
     //console.log(result[0].id);
-    id = result;
+    resultRows = result;
     //res = result;
 });
 
@@ -47,7 +38,7 @@ router.get('/', function(req, res, next) {
   res.render('index', {
       title: 'Limited Express',
       name: 'Arafat',
-      data: id
+      data: resultRows
   });
 });
 
